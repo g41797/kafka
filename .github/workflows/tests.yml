@@ -26,6 +26,7 @@ jobs:
       - uses: php-actions/composer@v6
         with:
           php_version: ${{ matrix.php }}
+          php_extensions: rdkafka 
       
 
       - run: bash docker/start.sh
