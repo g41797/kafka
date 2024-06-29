@@ -12,7 +12,7 @@ jobs:
       - uses: shivammathur/setup-php@v2
         with:
           php-version: ${{ matrix.php }}
-          extensions: zip
+          extensions: zip, rdkafka
           tools: composer
         env:
           fail-fast: true
@@ -24,6 +24,8 @@ jobs:
       - run: sudo echo "extension=rdkafka.so" | sudo tee -a /etc/php/${{matrix.php}}/cli/php.ini
       
       - run: sudo cat /etc/php/${{matrix.php}}/cli/php.ini
+      
+      - run: sudo cat /usr/local/etc/php/conf.d/docker-php-ext-sodium.ini
       
       - run: sudo pecl install rdkafka
       
