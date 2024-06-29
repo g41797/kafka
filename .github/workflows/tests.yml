@@ -23,7 +23,7 @@ jobs:
 
       - run: sudo pecl install rdkafka
 
-      - run: sudo ls -la /usr/local/etc/php/conf.d/
+      - run: sudo cat -la /etc/php/${{matrix.php}}/cli/php.ini
 
       - run: sudo echo "extension=rdkafka.so" > /usr/local/etc/php/conf.d/rdkafka.ini
 
