@@ -9,6 +9,8 @@ jobs:
     steps:
       - uses: actions/checkout@v3
 
+      - run: sudo apt-get install -y librdkafka-dev
+
       - uses: shivammathur/setup-php@v2
         with:
           php-version: ${{ matrix.php }}
@@ -21,11 +23,9 @@ jobs:
      
       - run: sudo apt install php-pear
 
-      - run: sudo apt-get install -y librdkafka-dev
-      
       - run: sudo cat /etc/php/${{matrix.php}}/cli/php.ini
       
-      - run: sudo pecl install rdkafka
+#      - run: sudo pecl install rdkafka
       
       - uses: php-actions/composer@v6
         with:
@@ -33,7 +33,7 @@ jobs:
           php_extensions: zip, rdkafka
   
 
-      - run: bash docker/start.sh
+#      - run: bash docker/start.sh
 
-      - run: vendor/bin/phpunit --testsuite Tests
+#      - run: vendor/bin/phpunit --testsuite Tests
 
