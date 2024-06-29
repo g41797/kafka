@@ -21,15 +21,16 @@ jobs:
 
       - run: sudo apt-get install -y librdkafka-dev
       
+      - run: sudo echo "extension=rdkafka.so" >> /etc/php/${{matrix.php}}/cli/php.ini
+      
       - run: sudo cat /etc/php/${{matrix.php}}/cli/php.ini
-
+      
       - run: sudo pecl install rdkafka
       
       - uses: php-actions/composer@v6
         with:
           php_version: ${{ matrix.php }}
-          php_extensions: rdkafka 
-      
+  
 
       - run: bash docker/start.sh
 
