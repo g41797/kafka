@@ -11,6 +11,10 @@ jobs:
 
       - run: sudo apt-get install -y librdkafka-dev
 
+      - run: sudo touch /etc/php/${{matrix.php}}/cli/php.ini
+
+      - run: sudo tail /etc/php/${{matrix.php}}/cli/php.ini
+
       - uses: shivammathur/setup-php@v2
         with:
           php-version: ${{ matrix.php }}
@@ -25,21 +29,24 @@ jobs:
 
       - run: sudo echo "extension=zip.so" | sudo tee -a /etc/php/${{matrix.php}}/cli/php.ini      
       
-      - run: sudo cat /etc/php/${{matrix.php}}/cli/php.ini
+      - run: sudo tail /etc/php/${{matrix.php}}/cli/php.ini
 
 
 #      - run: sudo echo "extension=rdkafka.so" | sudo tee -a /etc/php/${{matrix.php}}/cli/php.ini
      
-#      - run: sudo apt install php-pear
+      - run: sudo apt install php-pear
 
 #      - run: sudo cat /etc/php/${{matrix.php}}/cli/php.ini
       
-#      - run: sudo pecl install rdkafka
+      - run: sudo pecl install rdkafka
+
+      - run: sudo tail /etc/php/${{matrix.php}}/cli/php.ini
+
       
       - uses: php-actions/composer@v6
         with:
           php_version: ${{ matrix.php }}
-#          php_extensions: zip, rdkafka
+          php_extensions: zip, rdkafka
 
 #      - run: bash docker/start.sh
 
