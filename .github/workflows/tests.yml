@@ -21,7 +21,7 @@ jobs:
 
       - run: sudo apt-get install -y librdkafka-dev
       
-      - run: sudo echo "extension=rdkafka.so" >> /etc/php/${{matrix.php}}/cli/php.ini
+      - run: sudo echo "extension=rdkafka.so" | sudo tee -a /etc/php/${{matrix.php}}/cli/php.ini
       
       - run: sudo cat /etc/php/${{matrix.php}}/cli/php.ini
       
