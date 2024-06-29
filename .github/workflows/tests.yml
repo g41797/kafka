@@ -34,9 +34,9 @@ jobs:
 
 #      - run: sudo cat /etc/php/${{matrix.php}}/cli/php.ini
       
-      - run: sudo pecl install rdkafka
+#      - run: sudo pecl install rdkafka
 
-      - run: sudo tail /etc/php/${{matrix.php}}/cli/php.ini
+#      - run: sudo tail /etc/php/${{matrix.php}}/cli/php.ini
 
       
       - uses: php-actions/composer@v6
