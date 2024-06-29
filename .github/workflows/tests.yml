@@ -20,13 +20,11 @@ jobs:
       - run: sudo apt install php-pear
 
       - run: sudo apt-get install -y librdkafka-dev
-
-      - run: sudo pecl install rdkafka
-
+      
       - run: sudo cat /etc/php/${{matrix.php}}/cli/php.ini
 
-      - run: sudo echo "extension=rdkafka.so" > /usr/local/etc/php/conf.d/rdkafka.ini
-
+      - run: sudo pecl install rdkafka
+      
       - uses: php-actions/composer@v6
         with:
           php_version: ${{ matrix.php }}
