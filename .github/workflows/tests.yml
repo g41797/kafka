@@ -9,7 +9,7 @@ jobs:
     steps:
       - uses: actions/checkout@v3
 
-      - run: sudo apt-get install -y librdkafka-dev
+#      - run: sudo apt-get install -y librdkafka-dev
 
       - uses: shivammathur/setup-php@v2
         with:
@@ -42,7 +42,7 @@ jobs:
       - uses: php-actions/composer@v6
         with:
           php_version: ${{ matrix.php }}
-          php_extensions: zip, rdkafka
+#          php_extensions: zip, rdkafka
 
 #      - run: bash docker/start.sh
 
