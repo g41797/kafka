@@ -1,106 +1,80 @@
-Emulator
-https://docs.localstack.cloud/overview/
+Apache Kafka
+https://kafka.apache.org/
 
-LocalStack installation
-https://docs.localstack.cloud/getting-started/installation/
+Apache Kafka Quickstart
+https://kafka.apache.org/quickstart
 
-LocalStack SQS
-https://docs.localstack.cloud/user-guide/aws/sqs/
+Documentation
+https://kafka.apache.org/documentation/
 
-Using LocalStack with Docker Compose
-https://whattodevnow.medium.com/using-localstack-with-docker-compose-to-mock-aws-services-bb25a5b01d4b
+Use cases
+https://kafka.apache.org/documentation.html#uses
 
-Use wait-for-it.sh with LocalStack
-https://github.com/localstack/localstack/issues/732#issuecomment-1438774446
+DockerHub Apache Kafka
+https://hub.docker.com/r/apache/kafka
 
-How to fake AWS locally with LocalStack
-https://dev.to/goodidea/how-to-fake-aws-locally-with-localstack-27me
+Kafka Docker documentation
+https://github.com/apache/kafka/tree/trunk/docker/examples
+https://github.com/apache/kafka/blob/trunk/docker/examples/README.md
+https://kafka.apache.org/documentation/#docker
 
-Local Key Management Service (KMS)
-https://docs.localstack.cloud/user-guide/aws/kms/
+Adding support for https-based remote URL addresses in docker compose
+https://github.com/docker/compose/issues/10360
 
-Local Secrets Manager
-https://docs.localstack.cloud/user-guide/aws/secretsmanager/
+Docker Image apache/kafka:3.7.0
+https://hub.docker.com/layers/apache/kafka/3.7.0/images/sha256-3e324d2bd331570676436b24f625e5dcf1facdfbd62efcffabc6b69b1abc13cc
 
-AWS CLI v2
-https://docs.aws.amazon.com/cli/latest/reference/
+Confluent Community Docker Image for Apache Kafka
+https://hub.docker.com/r/confluentinc/cp-kafka
 
-SQS Message Attributes Shorthand error
-https://github.com/aws/aws-cli/issues/3637
+What Is Apache Kafka?
+https://developer.confluent.io/what-is-apache-kafka/
 
-PHP on AWS
-https://aws.amazon.com/developer/language/php/
+Apache Kafka® Tutorials
+https://developer.confluent.io/tutorials/
 
-PHP SDK
-https://docs.aws.amazon.com/sdk-for-php/
+Apache Kafka for beginners
+https://www.cloudkarafka.com/blog/part1-kafka-for-beginners-what-is-apache-kafka.html
 
-SQS code examples
-https://github.com/awsdocs/aws-doc-sdk-examples/tree/main/php/example_code/sqs
+Github actions
+https://github.com/confluentinc/confluent-kafka-go/blob/master/.github/workflows/base.yml
 
-How to use the PHP AWS SDK with LocalStack.
-https://docs.localstack.cloud/user-guide/integrations/sdks/php/
+Example GitHub Actions for Apache Kafka client
+https://github.com/ybyzek/kafka-github-actions
 
-localstack-aws-sdk-examples
-https://github.com/localstack/localstack-aws-sdk-examples/tree/main/php/s3/s3-crud
+Install Confluent Platform Using Docker
+https://docs.confluent.io/platform/current/installation/docker/installation.html#install-cp-using-docker
 
-Transparent Endpoint Injection
-https://docs.localstack.cloud/user-guide/tools/transparent-endpoint-injection/
+Batch processing with Apache Kafka
+https://www.kadeck.com/blog/how-to-implement-batch-processing-with-apache-kafka
 
-Create anonymous clients
-https://docs.aws.amazon.com/sdk-for-php/v3/developer-guide/guide_credentials_anonymous.html
+Batch Processing for Efficiency
+https://docs.confluent.io/kafka/design/efficient-design.html
 
-SQS overview
-https://aws.amazon.com/documentation-overview/sqs/
+Kafka-php
+https://github.com/weiboad/kafka-php
+https://packagist.org/packages/nmred/kafka-php
 
-Amazon Simple Queue Service Documentation
-https://docs.aws.amazon.com/sqs/
+Example
+https://demyanov.dev/using-php-apache-kafka
 
-AWS Cli create queue
-https://awscli.amazonaws.com/v2/documentation/api/latest/reference/sqs/create-queue.html
+Example of the client
+https://github.com/voyage-h/spider
 
-FIFO queues in Amazon SQS
-https://docs.aws.amazon.com/AWSSimpleQueueService/latest/SQSDeveloperGuide/sqs-fifo-queues.html
+Check how to use in CI
+https://github.com/jobcloud/php-kafka-lib
 
-FIFO queue delivery logic in Amazon SQS
-https://docs.aws.amazon.com/AWSSimpleQueueService/latest/SQSDeveloperGuide/FIFO-queues-understanding-logic.html
+Message queue in PHP using Kafka...
+https://blog.vladverpeta.com/message-queue-in-php-using-kafka-with-an-acks
 
-Consuming messages using long polling
-https://docs.aws.amazon.com/AWSSimpleQueueService/latest/SQSDeveloperGuide/sqs-short-and-long-polling.html#sqs-long-polling
+Open-Source Web UI for Apache Kafka Management
+https://github.com/provectus/kafka-ui
 
-AWS service endpoints
-https://docs.aws.amazon.com/general/latest/gr/rande.html
+Kafka Queue
+https://www.projectpro.io/article/kafka-queue/932
 
-Lambda examples using SDK for PHP
-https://docs.aws.amazon.com/sdk-for-php/v3/developer-guide/php_lambda_code_examples.html
+Kafka Docker
+https://lenses.io/apache-kafka-docker/
 
-Serverless Queues for Laravel on AWS Lambda (SQS)
-https://github.com/christoph-kluge/bref-sqs-laravel
-
-Serverless Snippets
-https://github.com/aws-samples/serverless-snippets
-
-Using Lambda with Amazon SQS
-https://docs.aws.amazon.com/lambda/latest/dg/with-sqs.html
-
-Amazon SQS Transport
-https://github.com/php-enqueue/sqs
-https://php-enqueue.github.io/transport/sqs/
-
-sqs-simple (PHP)
-https://github.com/tedicela/sqs-simple
-
-Bref SQS asynchronous tasks
-https://bref.sh/docs/use-cases/sqs
-
-Symfony Hello world with SQS
-https://github.com/brefphp/examples/tree/master/Symfony/sqs
-
-Configuration from options array
-https://github.com/basis-company/nats.php/blob/main/src/Configuration.php
-
-AWS SNS vs SQS
-https://ably.com/topic/aws-sns-vs-sqs
-
-PHPUnit : How to force an environment variable in Unit Test ?
-https://www.sudhanshubajaj.com/phpunit-how-to-force-an-environment-variable-in-unit-test/
-
+Apache Kafka Disaster Recovery
+https://github.com/lucianocarvalho/kafka-disaster-recovery

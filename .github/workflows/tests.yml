@@ -9,32 +9,20 @@ jobs:
     steps:
       - uses: actions/checkout@v3
 
-#      - run: sudo apt-get install -y librdkafka-dev
-
       - uses: shivammathur/setup-php@v2
         with:
           php-version: ${{ matrix.php }}
-          extensions: zip, rdkafka
+          extensions: zip
           tools: composer
         env:
           fail-fast: true
 
-      - run: sudo apt install php-pear
-
-      - run: sudo pecl install rdkafka
-
-      - run: sudo touch /etc/php/${{matrix.php}}/cli/php.ini
-
-      - run: sudo echo "extension=rdkafka.so" | sudo tee -a /etc/php/${{matrix.php}}/cli/php.ini      
-
-      - run: sudo tail /etc/php/${{matrix.php}}/cli/php.ini
-      
       - uses: php-actions/composer@v6
         with:
           php_version: ${{ matrix.php }}
-          php_extensions: zip, rdkafka
+          php_extensions: zip
 
-#      - run: bash docker/start.sh
+      - run: bash docker/start.sh
 
 #      - run: vendor/bin/phpunit --testsuite Tests
 
