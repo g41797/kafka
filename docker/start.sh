@@ -4,7 +4,14 @@ pwd
 
 export IMAGE=apache/kafka:latest
 
-docker compose -f docker/docker-compose.yml up -d
+if ! [ -f docker/docker-compose.yml ]; then
+  export DOCOMPOSE=./docker-compose.yml
+else
+  export DOCOMPOSE=docker/docker-compose.yml
+fi
+
+
+docker compose -f $DOCOMPOSE up -d
 
 echo 'Waiting for open port 9092'
 
