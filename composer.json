@@ -13,6 +13,7 @@
     "require": {
         "php": ">=8.2",
         "ramsey/uuid": "^4.7",
+        "g4197/kafka-php": ">=0.0.2",
         "yiisoft/factory": "^1.0",
         "yiisoft/friendly-exception": "^1.0",
         "yiisoft/queue": "dev-master"
