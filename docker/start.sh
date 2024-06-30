@@ -1,8 +1,12 @@
 #!/usr/bin/env bash
 
+pwd
+
 export IMAGE=apache/kafka:latest
 
-docker compose up -d
+tail docker/docker-compose.yml
+
+docker compose -f docker/docker-compose.yml up -d
 
 echo 'Waiting for open port 9092'
 
