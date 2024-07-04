@@ -21,20 +21,20 @@ fi
 
 pwd
 
-sudo $PKMAN -y update  \
-&& $PKMAN -y install curl wget zip unzip git \
+sudo apt -y update  \
+&& apt -y install curl wget zip unzip git \
 && rm -rf /var/lib/apt/lists/*
 
-$PKMAN install python3-pip
+apt -y install python3-pip
 
 sudo git clone --depth 1 https://github.com/edenhill/librdkafka.git \
     && ( \
         cd librdkafka \
-        && ./configure \
-        && make \
-        && make install \
+        && sudo ./configure \
+        && sudo make \
+        && sudo make install \
     ) \
-    && $PKMAN install librdkafka-dev \
-    && pecl install rdkafka \
+    && sudo apt install librdkafka-dev \
+    && sudo pecl install rdkafka \
     && echo "extension=rdkafka.so" > /usr/local/etc/php/conf.d/rdkafka.ini
 
