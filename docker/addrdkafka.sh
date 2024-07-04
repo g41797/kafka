@@ -22,10 +22,22 @@ fi
 pwd
 
 sudo apt -y update  \
-&& apt -y install curl wget zip unzip git \
-&& rm -rf /var/lib/apt/lists/*
+&& sudo apt -y install curl wget zip unzip git \
+&& sudo rm -rf /var/lib/apt/lists/*
 
-apt -y install python3-pip
+INI_LOC=$(php -i|sed -n '/^Loaded Configuration File => /{s:^.*> ::;p;q}')
+if [ -f "$INI_LOC" ]; then
+  FOUND=$(sed -n 's:^[\t ]*::;/^;/d;/^$/d;s:[\t ]*=[\t ]*:=:;/extension="*imagick.so"*/{p;q}' <"$INI_LOC")
+  if [ -z "$FOUND" ]; then
+    sed -i~ '/^[\t ]*\[PHP\][\t ]*$/{s:$:\nextension=imagick.so:}' "$INI_LOC"
+  fi
+fi
+
+echo $INI_LOC
+
+cat $INI_LOC
+
+sudo apt -y install python3-pip
 
 sudo git clone --depth 1 https://github.com/edenhill/librdkafka.git \
     && ( \
