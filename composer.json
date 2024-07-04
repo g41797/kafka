@@ -12,7 +12,7 @@
     "prefer-stable": true,
     "require": {
         "php": ">=8.2",
-        "ext-bcmath": "*",
+        "phpseclib/bcmath_compat":  "^2.0.1",
         "longlang/phpkafka": "^1.2",
         "ramsey/uuid": "^4.7",
         "yiisoft/factory": "^1.0",
