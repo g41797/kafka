@@ -47,6 +47,5 @@ sudo git clone --depth 1 https://github.com/edenhill/librdkafka.git \
         && sudo make install \
     ) \
     && sudo pecl install rdkafka \
-    && echo "extension=rdkafka.so" >> $INI_LOC \
-    && echo "extension=rdkafka.so" > /usr/local/etc/php/conf.d/rdkafka.ini
+    && echo "extension=rdkafka.so" >> $INI_LOC
 
