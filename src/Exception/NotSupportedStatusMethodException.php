@@ -1,6 +1,6 @@
 <?php
 
-namespace G41797\Queue\Sqs\Exception;
+namespace G41797\Queue\Kafka\Exception;
 
 use Yiisoft\FriendlyException\FriendlyExceptionInterface;
 

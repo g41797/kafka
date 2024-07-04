@@ -17,6 +17,8 @@ jobs:
         env:
           fail-fast: true
 
+      - run: bash docker/addrdkafka.sh
+
       - uses: php-actions/composer@v6
         with:
           php_version: ${{ matrix.php }}

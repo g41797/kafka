@@ -1,7 +1,5 @@
 #!/usr/bin/env bash
 
-pwd
-
 export IMAGE=apache/kafka:latest
 
 if ! [ -f docker/docker-compose.yml ]; then
@@ -9,7 +7,6 @@ if ! [ -f docker/docker-compose.yml ]; then
 else
   export DOCOMPOSE=docker/docker-compose.yml
 fi
-
 
 docker compose -f $DOCOMPOSE up -d
 

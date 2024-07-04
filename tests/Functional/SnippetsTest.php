@@ -2,9 +2,9 @@
 
 declare(strict_types=1);
 
-namespace G41797\Queue\Sqs\Functional;
+namespace G41797\Queue\Kafka\Functional;
 
-use G41797\Queue\Sqs\Broker;
+use G41797\Queue\Kafka\Broker;
 
 use Aws\Exception\AwsException;
 use Aws\Sqs\SqsClient;

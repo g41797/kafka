@@ -27,6 +27,9 @@ https://hub.docker.com/layers/apache/kafka/3.7.0/images/sha256-3e324d2bd33157067
 Confluent Community Docker Image for Apache Kafka
 https://hub.docker.com/r/confluentinc/cp-kafka
 
+What is Apache Kafka?
+https://www.conduktor.io/kafka/what-is-apache-kafka/
+
 What Is Apache Kafka?
 https://developer.confluent.io/what-is-apache-kafka/
 
@@ -51,6 +54,45 @@ https://www.kadeck.com/blog/how-to-implement-batch-processing-with-apache-kafka
 Batch Processing for Efficiency
 https://docs.confluent.io/kafka/design/efficient-design.html
 
+Swoole PHP Kafka client **********
+https://github.com/swoole/phpkafka
+
+Examples:
+https://github.com/hanhyu/wlsh-framework/blob/wlsh/tests/others/kafkaProducer.php
+https://github.com/hanhyu/wlsh-framework/blob/wlsh/tests/others/kafkaCustomer.php
+
+Kafka client for Hyperf
+https://github.com/hyperf/kafka
+https://github.com/hyperf/kafka/blob/master/publish/kafka.php
+
+Async-queue (based on Redis)
+https://github.com/hyperf/async-queue
+
+imi-kafka
+https://github.com/imiphp/imi-kafka
+
+Client integration for Kafka in Yii2
+https://github.com/glsv/yii2kafka
+
+Message queue in PHP using Kafka...
+https://blog.vladverpeta.com/message-queue-in-php-using-kafka-with-an-acks
+
+Php-Kafka demo
+https://github.com/Phillaf/php-kafka-demo
+
+Open-Source Web UI for Apache Kafka Management
+https://github.com/provectus/kafka-ui
+
+Kafka Queue
+https://www.projectpro.io/article/kafka-queue/932
+    Kafka's consumer groups ...
+
+Kafka Docker
+https://lenses.io/apache-kafka-docker/
+
+Apache Kafka Disaster Recovery
+https://github.com/lucianocarvalho/kafka-disaster-recovery
+
 Kafka-php
 https://github.com/weiboad/kafka-php
 https://packagist.org/packages/nmred/kafka-php
@@ -63,18 +105,3 @@ https://github.com/voyage-h/spider
 
 Check how to use in CI
 https://github.com/jobcloud/php-kafka-lib
-
-Message queue in PHP using Kafka...
-https://blog.vladverpeta.com/message-queue-in-php-using-kafka-with-an-acks
-
-Open-Source Web UI for Apache Kafka Management
-https://github.com/provectus/kafka-ui
-
-Kafka Queue
-https://www.projectpro.io/article/kafka-queue/932
-
-Kafka Docker
-https://lenses.io/apache-kafka-docker/
-
-Apache Kafka Disaster Recovery
-https://github.com/lucianocarvalho/kafka-disaster-recovery

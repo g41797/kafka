@@ -2,7 +2,7 @@
 
 declare(strict_types=1);
 
-namespace G41797\Queue\Sqs;
+namespace G41797\Queue\Kafka;
 
 use Psr\Log\LoggerInterface;
 use Psr\Log\NullLogger;
@@ -21,9 +21,9 @@ use Enqueue\Sqs\SqsConsumer;
 use Enqueue\Sqs\SqsConnectionFactory;
 use Enqueue\Sqs\SqsDestination;
 
-use G41797\Queue\Sqs\Configuration as BrokerConfiguration;
-use G41797\Queue\Sqs\Exception\NotSupportedStatusMethodException;
-use G41797\Queue\Sqs\Exception\NotConnectedSqsException;
+use G41797\Queue\Kafka\Configuration as BrokerConfiguration;
+use G41797\Queue\Kafka\Exception\NotSupportedStatusMethodException;
+use G41797\Queue\Kafka\Exception\NotConnectedSqsException;
 
 
 class Broker implements BrokerInterface
