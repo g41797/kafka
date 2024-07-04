@@ -35,7 +35,7 @@ fi
 
 echo $INI_LOC
 
-cat $INI_LOC
+tail $INI_LOC
 
 sudo apt -y install python3-pip
 
@@ -48,5 +48,6 @@ sudo git clone --depth 1 https://github.com/edenhill/librdkafka.git \
     ) \
     && sudo apt install librdkafka-dev \
     && sudo pecl install rdkafka \
+    && echo "extension=rdkafka.so" >> $INI_LOC
     && echo "extension=rdkafka.so" > /usr/local/etc/php/conf.d/rdkafka.ini
 
