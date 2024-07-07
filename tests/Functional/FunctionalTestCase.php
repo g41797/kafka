@@ -9,10 +9,6 @@ use PHPUnit\Framework\TestCase;
 use Yiisoft\Queue\Message\Message;
 use Yiisoft\Queue\Message\MessageInterface;
 
-use G41797\Queue\Kafka\Adapter;
-use G41797\Queue\Kafka\Broker;
-use G41797\Queue\Kafka\Configuration;
-
 
 abstract class FunctionalTestCase extends TestCase
 {
@@ -30,7 +26,7 @@ abstract class FunctionalTestCase extends TestCase
     }
     public function clean(): void
     {
-        $this->assertTrue(SnippetsTest::purgeQueues());
+        $this->assertTrue(SnippetsTest::purgeTopic());
     }
     static public function defaultJob(): MessageInterface
     {

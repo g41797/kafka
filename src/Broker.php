@@ -30,27 +30,17 @@ class Broker implements BrokerInterface
 {
     public const SUBSCRIPTION_NAME = 'jobs';
 
-    private string $queueName;
-
     private JsonMessageSerializer $serializer;
 
     public function __construct(
-        private string                 $channelName = Adapter::DEFAULT_CHANNEL_NAME,
-        public ?BrokerConfiguration    $configuration = null,
-        public ?LoggerInterface        $logger = null
+        private string                  $channelName    = Adapter::DEFAULT_CHANNEL_NAME,
+        public  ?BrokerConfiguration    $configuration  = null,
+        public  ?LoggerInterface        $logger         = null
     ) {
         $this->serializer = new JsonMessageSerializer();
 
-        $this->queueName = $this->channelName . '.fifo';
-
         if (null == $configuration) {
             $this->configuration = new BrokerConfiguration();
-        }
-
-        $endpoint = self::defaultEndpoint();
-
-        if (isset($endpoint)) {
-            $this->configuration->update(['endpoint' => $endpoint]);
         }
 
         if (null == $logger) {

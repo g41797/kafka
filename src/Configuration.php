@@ -4,14 +4,19 @@ declare(strict_types=1);
 
 namespace G41797\Queue\Kafka;
 
+use longlang\phpkafka\Consumer\ConsumerConfig as KafkaConsumerConfig;
+use longlang\phpkafka\Producer\ProducerConfig as KafkaProducerConfig;
+
 final class Configuration
 {
+    public readonly string $defaultGroupId;
     private array $config = [];
 
     public function __construct(
         array $config = []
     ) {
         $this->config = array_replace(self::default(), $config);
+        $this->defaultGroupId = 'workers';
     }
 
     public function update(array $config): self
@@ -20,22 +25,33 @@ final class Configuration
         return $this;
     }
 
-    public function raw(): array
+    public function forConsumer(string $topic = Adapter::DEFAULT_CHANNEL_NAME): KafkaConsumerConfig
     {
-        return $this->config;
+        $config = new KafkaConsumerConfig($this->config);
+        $config->setGroupId($this->defaultGroupId);
+        $config->setTopic($topic);
+        return $config;
+    }
+    public function forProducer(): KafkaProducerConfig
+    {
+        return new KafkaProducerConfig($this->config);
     }
 
     static public function default(): array
     {
         return [
-            'key' => null,
-            'secret' => null,
-            'token' => null,
-            'region' => 'us-east-1',
-            'retries' => 3,
-            'version' => 'latest',
-            'profile' => null,
-            'queue_owner_aws_account_id' => null
+            'brokers' => 'localhost:9092',
         ];
     }
+
+    static public function defaultConsumerConfig(): KafkaConsumerConfig
+    {
+        return (new Configuration())->forConsumer();
+    }
+
+    static public function defaultProducerConfig(): KafkaProducerConfig
+    {
+        return (new Configuration())->forProducer();
+    }
+
 }

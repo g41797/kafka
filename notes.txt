@@ -90,6 +90,10 @@ Kafka Queue
 https://www.projectpro.io/article/kafka-queue/932
     Kafka's consumer groups ...
 
+    group.instance.id is an identifier for a consumer, hence should be unique at consumer level
+    group.id is an identifier for a group, hence unique at group level
+
+
 Kafka Docker
 https://lenses.io/apache-kafka-docker/
 
