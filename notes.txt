@@ -7,6 +7,9 @@ https://kafka.apache.org/quickstart
 Documentation
 https://kafka.apache.org/documentation/
 
+Configuration
+https://kafka.apache.org/documentation.html#configuration
+
 Use cases
 https://kafka.apache.org/documentation.html#uses
 
@@ -109,3 +112,8 @@ https://github.com/jobcloud/php-kafka-lib
 Bash Script - Store PHP INI location in a variable
 https://stackoverflow.com/questions/48249269/bash-script-store-php-ini-location-in-a-variable
 
+Kadeck GUI
+https://www.kadeck.com/get-kadeck
+https://help.xeotek.com/portal/en/kb/xeotek/user-guide
+    Wait ~60 seconds for Kadeck to become available at
+    http://localhost:80 and log in using admin as the username and password.

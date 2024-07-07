@@ -12,6 +12,7 @@
     "prefer-stable": true,
     "require": {
         "php": ">=8.2",
+        "g4197/kafka-php": ">=0.0.3",
         "phpseclib/bcmath_compat":  "^2.0.1",
         "longlang/phpkafka": "^1.2",
         "ramsey/uuid": "^4.7",
