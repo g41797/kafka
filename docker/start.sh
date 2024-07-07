@@ -27,4 +27,7 @@ done
 
 
 echo 'ok'
+echo ''
 
+date
+sudo netstat --tcp --listening --programs --numeric|grep -o 9092
