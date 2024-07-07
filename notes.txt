@@ -121,3 +121,9 @@ https://www.kadeck.com/get-kadeck
 https://help.xeotek.com/portal/en/kb/xeotek/user-guide
     Wait ~60 seconds for Kadeck to become available at
     http://localhost:80 and log in using admin as the username and password.
+
+Kafka CLI
+https://github.com/fgrosse/kafkactl
+    ./kafkactl config add "my-context" --broker localhost:9092
+    ./kafkactl get brokers
+
