@@ -40,7 +40,7 @@ final class Configuration
     static public function default(): array
     {
         return [
-            'brokers' => '127.0.0.1:9092',
+            'brokers' => '0.0.0.0:9092',
         ];
     }
 
