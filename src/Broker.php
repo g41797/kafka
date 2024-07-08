@@ -9,21 +9,20 @@ use Psr\Log\NullLogger;
 
 use Ramsey\Uuid\Uuid;
 
+use longlang\phpkafka\Consumer\Consumer;
+use longlang\phpkafka\Consumer\ConsumeMessage;
+use longlang\phpkafka\Producer\Producer;
+
+
 use Yiisoft\Queue\Enum\JobStatus;
 use Yiisoft\Queue\Message\IdEnvelope;
 use Yiisoft\Queue\Message\JsonMessageSerializer;
 use Yiisoft\Queue\Message\MessageInterface;
 
-use Interop\Queue\Producer;
-
-use Enqueue\Sqs\SqsContext;
-use Enqueue\Sqs\SqsConsumer;
-use Enqueue\Sqs\SqsConnectionFactory;
-use Enqueue\Sqs\SqsDestination;
-
 use G41797\Queue\Kafka\Configuration as BrokerConfiguration;
+
 use G41797\Queue\Kafka\Exception\NotSupportedStatusMethodException;
-use G41797\Queue\Kafka\Exception\NotConnectedSqsException;
+use G41797\Queue\Kafka\Exception\NotConnectedKafkaException;
 
 
 class Broker implements BrokerInterface
@@ -67,16 +66,21 @@ class Broker implements BrokerInterface
     private ?Producer $producer = null;
     public function push(MessageInterface $job): ?IdEnvelope
     {
-        $this->prepare();
-
-        if ($this->producer == null) {
-            $this->producer = $this->sqs->createProducer();
+        try {
+            if ($this->producer == null) {
+                $producer = new Producer($this->configuration->forProducer());
+                $this->producer = $producer;
+            }
+        }
+        catch (\Throwable ) {
+            throw new NotConnectedKafkaException();
         }
 
         $env = $this->submit($job);
 
         if ($env == null)
         {
+            $this->producer->close();
             $this->producer = null;
         }
 
@@ -89,13 +93,7 @@ class Broker implements BrokerInterface
             $jobId      = Uuid::uuid7()->toString();
             $payload    = $this->serializer->serialize($job);
 
-            $sqsMsg     = $this->sqs->createMessage(body: $payload);
-
-            $sqsMsg->setMessageDeduplicationId($jobId);
-            $sqsMsg->setMessageId($jobId);
-            $sqsMsg->setMessageGroupId(Broker::SUBSCRIPTION_NAME);
-
-            $this->producer->send($this->queue, $sqsMsg);
+            $this->producer->send($this->channelName, $payload, $jobId);
 
             return new IdEnvelope($job, $jobId);
         }
@@ -109,35 +107,56 @@ class Broker implements BrokerInterface
         throw new NotSupportedStatusMethodException();
     }
 
-    private ?SqsConsumer $receiver = null;
+    private ?Consumer $receiver = null;
 
     public function pull(float $timeout): ?IdEnvelope
     {
-        $this->prepare();
-
-        if ($this->receiver == null)
-        {
-            $this->receiver = $this->sqs->createConsumer($this->queue);
+        try {
+            if ($this->receiver == null) {
+                $consumer = new Consumer($this->configuration->forConsumer($this->channelName));
+                $this->receiver = $consumer;
+            }
+        }
+        catch (\Throwable ) {
+            throw new NotConnectedKafkaException();
         }
 
         try
         {
-            $sqsMsg = $this->receiver->receive((int)(ceil($timeout*1000.0)));
+            $kafkaMsg = $this->next($timeout);
 
-            if (null == $sqsMsg) { return null;}
+            if (null == $kafkaMsg) { return null;}
 
-            $job    = $this->serializer->unserialize($sqsMsg->getBody());
-            $jid    = $sqsMsg->getMessageId();
+            $job    = $this->serializer->unserialize($kafkaMsg->getValue());
+            $jid    = $kafkaMsg->getKey();
 
-            $this->receiver->acknowledge($sqsMsg);
+            $this->receiver->ack($kafkaMsg);
 
             return new IdEnvelope($job, $jid);
         }
         catch (\Exception $exc) {
+            $this->receiver->close();
             $this->receiver = null;
             return null;
         }
     }
+
+    public function next(float $timeout = 0): ?ConsumeMessage
+    {
+        $start = microtime(true);
+
+        while (true) {
+            $message = $this->receiver->consume();
+            if (null !== $message) {
+                return $message;
+            }
+            if ($timeout && ($start + $timeout < microtime(true))) {
+                continue;
+            }
+            return null;
+        }
+    }
+
     public function clean(): int
     {
         $count = 0;
@@ -159,50 +178,6 @@ class Broker implements BrokerInterface
     public function done(string $id): bool
     {
         return !empty($id);
-    }
-
-    public ?SqsContext      $sqs    = null;
-    public SqsDestination   $queue;
-    public string       $queueUrl;
-
-    private function prepare(): void
-    {
-        try
-        {
-            $this->init();
-            return;
-        }
-        catch (\Exception $exc) {
-            throw new NotConnectedSqsException();
-        }
-    }
-
-    private function init(): void
-    {
-        if ($this->sqs !== null)
-        {
-            return;
-        }
-
-        $sqs = (new SqsConnectionFactory($this->configuration->raw()))->createContext();
-
-        $this->queue = $sqs->createQueue($this->queueName);
-
-        $this->queue->setFifoQueue(true);
-        $this->queue->setReceiveMessageWaitTimeSeconds((int)20);
-        $this->queue->setContentBasedDeduplication(true);
-
-        $sqs->declareQueue($this->queue);
-
-        $this->queueUrl = $sqs->getQueueUrl($this->queue); // throws exception for failure
-        $this->sqs      = $sqs;
-
-        return;
-    }
-
-    static public function defaultEndpoint(): string|null
-    {
-        return $_ENV['ENDPOINT'];
     }
 
 }

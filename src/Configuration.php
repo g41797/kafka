@@ -34,13 +34,15 @@ final class Configuration
     }
     public function forProducer(): KafkaProducerConfig
     {
+        $config = new KafkaProducerConfig($this->config);
+        $config->setAcks(-1);
         return new KafkaProducerConfig($this->config);
     }
 
     static public function default(): array
     {
         return [
-            'brokers' => '0.0.0.0:9092',
+            'bootstrapServers' => '0.0.0.0:9092',
         ];
     }
 

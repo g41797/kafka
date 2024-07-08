@@ -18,6 +18,8 @@ https://hub.docker.com/r/apache/kafka
 
 Kafka Docker documentation
 https://github.com/apache/kafka/tree/trunk/docker/examples
+https://github.com/apache/kafka/blob/trunk/docker/examples/docker-compose-files/cluster/isolated/plaintext/docker-compose.yml
+
 https://github.com/apache/kafka/blob/trunk/docker/examples/README.md
 https://kafka.apache.org/documentation/#docker
 
@@ -126,4 +128,17 @@ Kafka CLI
 https://github.com/fgrosse/kafkactl
     ./kafkactl config add "my-context" --broker localhost:9092
     ./kafkactl get brokers
+
+kcat
+https://github.com/edenhill/kcat
+
+Kafka Listeners - Explained
+https://rmoff.net/2018/08/02/kafka-listeners-explained/
+https://www.confluent.io/blog/kafka-listeners-explained/
+
+Kafka Docker Connectivity
+https://github.com/wurstmeister/kafka-docker/wiki/Connectivity
+
+Connect to Kafka running in Docker
+https://stackoverflow.com/questions/51630260/connect-to-kafka-running-in-docker/51634499#51634499
 

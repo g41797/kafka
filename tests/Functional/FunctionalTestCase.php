@@ -18,15 +18,9 @@ abstract class FunctionalTestCase extends TestCase
 
         parent::setUp();
     }
-    public function tearDown(): void
-    {
-        $this->clean();
-
-        parent::tearDown();
-    }
     public function clean(): void
     {
-        $this->assertTrue(SnippetsTest::purgeTopic());
+        $this->assertTrue(CleanerTest::purgeTopic());
     }
     static public function defaultJob(): MessageInterface
     {

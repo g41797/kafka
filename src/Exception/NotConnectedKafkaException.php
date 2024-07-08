@@ -6,16 +6,16 @@ namespace G41797\Queue\Kafka\Exception;
 
 use Yiisoft\FriendlyException\FriendlyExceptionInterface;
 
-class NotConnectedSqsException extends \RuntimeException implements FriendlyExceptionInterface
+class NotConnectedKafkaException extends \RuntimeException implements FriendlyExceptionInterface
 {
     public function getName(): string
     {
-        return 'Not connected to SQS.';
+        return 'Not connected to Kafka.';
     }
 
     public function getSolution(): ?string
     {
-        return 'Check your SQS configuration.';
+        return 'Check your Kafka configuration.';
     }
 }
 

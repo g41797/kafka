@@ -4,7 +4,7 @@ export IMAGE=apache/kafka:latest
 
 if ! [ -f docker/docker-compose.yml ]; then
   export DOCOMPOSE=./docker-compose.yml
-  export KAFKACTL=../../bin/kafkactl
+  export KAFKACTL=../bin/kafkactl
 else
   export DOCOMPOSE=docker/docker-compose.yml
   export KAFKACTL=bin/kafkactl
@@ -35,6 +35,7 @@ date
 sudo netstat --tcp --listening --programs --numeric|grep 9092
 
 date
-$KAFKACTL config add "my-context" --broker localhost:9092
-$KAFKACTL get brokers
+
+# $KAFKACTL config add "my-context" --broker localhost:9092
+# $KAFKACTL get brokers
 

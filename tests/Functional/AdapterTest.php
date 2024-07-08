@@ -56,34 +56,30 @@ class AdapterTest extends FunctionalTestCase
 
     protected function createSubmitter() : AdapterInterface {
         $logger = $this->getLogger();
-        return new Adapter(brokerConfiguration: SubmitterTest::testConfigArray(), logger: $logger);
+        return new Adapter(logger: $logger);
     }
 
     protected function createWorker() : AdapterInterface {
         $logger = $this->getLogger();
         $loop = $this->getLoop();
-        return new Adapter(brokerConfiguration: SubmitterTest::testConfigArray(),logger: $logger, loop: $loop, timeoutSec: 3.0);
+        return new Adapter(logger: $logger, loop: $loop, timeoutSec: 3.0);
     }
 
     static function getJob(): MessageInterface {
         return new Message("handler", data: 'data',metadata: []);
     }
-    public function testSubmitterWorker(): void
+
+    public function pingPong(): void
     {
+        $this->reset();
+
         $job = self::getJob();
 
         $submitter = $this->createSubmitter();
-        $this->assertNotNull($submitter);
-
-        $count = 10;
-
-        $submitted = $this->submit($submitter, $job, $count);
-
-        $this->assertEquals($count, count($submitted));
-
         $worker = $this->createWorker();
-        $this->assertNotNull($worker);
 
+        $submitted = $this->submit($submitter, $job, 1);
+        $this->assertEquals(1, count($submitted));
         $this->process($worker, $job, $submitted);
 
         return;
@@ -112,12 +108,29 @@ class AdapterTest extends FunctionalTestCase
     protected function process(AdapterInterface $worker, MessageInterface $expectedJob, array $ids): void
     {
         $this->getLoop()->update(count($ids));
-        //$this->getLoop()->update(1000);
         $this->getHandler()->update($expectedJob);
 
         $worker->subscribe($this->getCallback());
 
         $this->assertEquals(count($ids), $this->getHandler()->processed());
+
+        return;
+    }
+
+    protected function reset(): void
+    {
+        $this->logger   = null;
+        $this->loop     = null;
+        $this->handler  = null;
+    }
+
+    public function testSubmitterWorker(): void
+    {
+        $count = 10;
+
+        for ($i = 0; $i < $count; $i++) {
+            $this->pingPong();
+        }
 
         return;
     }
