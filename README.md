@@ -6,7 +6,7 @@
 ## Description
 
 Yii3 Queue Adapter for [**AWS SQS**](https://aws.amazon.com/documentation-overview/sqs/) is new adapter in [Yii3 Queue Adapters family.](https://github.com/yiisoft/queue/blob/master/docs/guide/en/adapter-list.md)
-
+    
 Implementation of adapter is based on [enqueue/sqs](https://github.com/php-enqueue/sqs) library.
 
 ## Requirements
