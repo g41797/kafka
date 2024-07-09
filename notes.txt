@@ -142,3 +142,5 @@ https://github.com/wurstmeister/kafka-docker/wiki/Connectivity
 Connect to Kafka running in Docker
 https://stackoverflow.com/questions/51630260/connect-to-kafka-running-in-docker/51634499#51634499
 
+Bitnami package for Apache Kafka
+https://github.com/bitnami/containers/tree/main/bitnami/kafka#accessing-apache-kafka-with-internal-and-external-clients
