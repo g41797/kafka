@@ -1,7 +1,7 @@
 # Yii3 Queue Adapter for Amazon Simple Queue Service (AWS SQS) 
 
 
-[![tests](https://github.com/g41797/queue-kafka/actions/workflows/tests.yml/badge.svg)](https://github.com/g41797/queue-kafka/actions/workflows/tests.yml)
+[![build](https://github.com/g41797/queue-kafka/actions/workflows/tests.yml/badge.svg)](https://github.com/g41797/queue-kafka/actions/workflows/tests.yml)
 
 ## Description
 
