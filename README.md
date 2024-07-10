@@ -60,5 +60,5 @@ Description of cumbersome configuration see [Kafka Listeners - Explained](https:
 
 ## License
 
-Yii3 Queue Adapter for AWS SQS is free software. It is released under the terms of the BSD License.
+Yii3 Queue Adapter for Apache Kafka is free software. It is released under the terms of the BSD License.
 Please see [`LICENSE`](./LICENSE.md) for more information.
