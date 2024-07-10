@@ -53,7 +53,7 @@ is not supported.
 ### Testing
 
 Unit-testing is supported for local environment.
-Run of phpinit under GitHib action was disabled
+Run of phpunit under GitHib action was disabled
 because problem of kafka configuration.
 Description of cumbersome configuration see [Kafka Listeners - Explained](https://rmoff.net/2018/08/02/kafka-listeners-explained/)
 
