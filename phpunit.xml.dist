@@ -12,11 +12,11 @@
          stopOnFailure="false"
          stopOnWarning="false"
          displayDetailsOnTestsThatTriggerWarnings="true"
+         displayDetailsOnTestsThatTriggerNotices="true"
          colors="true"
 >
     <php>
         <ini name="error_reporting" value="-1"/>
-        <env name="ENDPOINT" value="http://localhost.localstack.cloud:4566" force="true" />
     </php>
 
     <testsuites>

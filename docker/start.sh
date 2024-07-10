@@ -35,8 +35,7 @@ date
 sudo netstat --tcp --listening --programs --numeric|grep 9092
 
 date
-
-    $KAFKACTL config add "my-context" --broker localhost:9092
+$KAFKACTL config add "my-context" --broker localhost:9092
 $KAFKACTL get brokers
 $KAFKACTL config delete "my-context"
 

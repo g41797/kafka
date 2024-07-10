@@ -42,7 +42,7 @@ final class Configuration
     static public function default(): array
     {
         return [
-            'bootstrapServers' => '0.0.0.0:9092',
+            'bootstrapServers' => 'localhost:9092',
         ];
     }
 
